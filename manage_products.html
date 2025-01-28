@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Products - THE GARDEN</title>
+    <link rel="stylesheet" href="admin_styles.css">
+</head>
+<body>
+    <header>
+        <h1>Manage Products</h1>
+        <nav id="navbar">
+            <a href="admin_dashboard.html">Dashboard</a>
+            <a href="manage_users.html">Manage Users</a>
+            <a href="manage_products.html">Manage Products</a>
+            <a href="admin_logout.html">Logout</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Existing Products</h2>
+        <!-- Existing Products Display -->
+        <div class="existing-products">
+            <?php include 'manage_products.php'; ?>
+        </div>
+
+        <!-- Add New Product Link -->
+        <h3><a href="add_product.php">Add New Product</a></h3>
+    </main>
+
+    <footer>
+        <p>Thank you for managing our products.</p>
+    </footer>
+</body>
+</html>

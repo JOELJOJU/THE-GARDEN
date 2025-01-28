@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Login - THE GARDEN</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #006622;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #333;
+            text-align: left;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #006622;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #004d1a;
+        }
+
+        .message {
+            margin-top: 20px;
+        }
+
+        .message a {
+            color: #006622;
+            text-decoration: none;
+        }
+
+        .message a:hover {
+            text-decoration: underline;
+        }
+
+        .forgot-password {
+            display: inline-block;
+            margin-top: 8px;
+            font-size: 14px;
+            color: #006622;
+            text-decoration: none;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+            color: #004d1a;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            // Check if there are error messages in the URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const error = urlParams.get('error');
+            if (error) {
+                // Display alert based on error type
+                if (error === 'username') {
+                    alert('Username not found');
+                } else if (error === 'password') {
+                    alert('Invalid password');
+                }
+            }
+
+            // Add event listener to check clicks outside the login container
+            document.addEventListener('click', function(event) {
+                const loginContainer = document.querySelector('.login-container');
+                if (!loginContainer.contains(event.target)) {
+                    history.back(); // Go back to the previous page
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+
+        <form action="user_login_process.php" method="post">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+            
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+
+            
+            
+            <input type="submit" value="Login">
+        </form>
+
+        <div class="message">
+            <p>Don't have an account? <a href="user_signup.html">Sign up here</a></p>
+        </div>
+    </div>
+</body>
+</html>

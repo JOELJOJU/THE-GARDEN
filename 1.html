@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE GARDEN</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>THE GARDEN</h1>
+    </header>
+
+    <nav id="navbar">
+        <div class="dropdown">
+            <a href="1.html" class="dropbtn">Home</a>
+            <div class="dropdown-content">
+                <a href="account1.php">View Account</a> <!-- Updated to link to account.html -->
+                <a href="logout.php">Sign Out</a>
+            </div>
+        </div>
+        <a href="products.html">Products</a>
+        <a href="user_login.html">Login</a>
+        <a href="user_signup.html">Sign up</a>
+        <a href="contact.html">Contact us</a>
+    </nav>
+
+    <div class="hero" id="home">
+        <div class="slideshow-container">
+            <div class="mySlides fade">
+                <img src="image5.jpg" alt="Garden Image 1">
+            </div>
+            <div class="mySlides fade">
+                <img src="image.jpg" alt="Garden Image 2">
+            </div>
+            <div class="mySlides fade">
+                <img src="image3.jpg" alt="Garden Image 3">
+            </div>
+        </div>
+        <h1>Welcome to "THE GARDEN"</h1>
+        <h3>Discover a lush world of plants at your fingertips. From vibrant flowers to hardy greens, our curated selection brings the beauty of nature to your home. Explore our collection and find the perfect plant for every corner of your life.</h3>
+        
+       
+    </div>
+
+    <div id="spacer" class="container"></div>
+
+    <footer id="contact">
+        <p>Thank you for visiting our website.</p>
+    </footer>
+
+    <script>
+        window.onscroll = function() {
+            var navbar = document.getElementById("navbar");
+            var sticky = navbar.offsetTop;
+
+            if (window.pageYOffset > sticky) {
+                navbar.classList.add("fixed");
+            } else {
+                navbar.classList.remove("fixed");
+            }
+        };
+
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}    
+            slides[slideIndex-1].style.display = "block";  
+            setTimeout(showSlides, 5000); // Change image every 5 seconds
+        }
+    </script>
+</body>
+</html>

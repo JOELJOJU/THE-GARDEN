@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout - THE GARDEN</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            scroll-behavior: smooth;
+            overflow: hidden; /* Prevents scroll issues */
+        }
+
+        header {
+            background-color: #006622;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 100%;
+        }
+
+        nav {
+            background-color: #004d1a;
+            padding: 10px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            margin: 0 20px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #006622;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #004d1a;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Leaf Animation Styling */
+        .leaf {
+            position: fixed;
+            width: 25px;
+            height: 25px;
+            background: url('leaf.png') no-repeat center/cover;
+            opacity: 0.8;
+            animation: fall linear infinite;
+            pointer-events: none;
+        }
+
+        /* Keyframes for Leaf Falling Animation */
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Leaf Positions, Speeds, and Delays */
+        .leaf:nth-child(1) { left: 3%; animation-duration: 10s; animation-delay: 0s; }
+        .leaf:nth-child(2) { left: 8%; animation-duration: 12s; animation-delay: 1s; }
+        .leaf:nth-child(3) { left: 13%; animation-duration: 11s; animation-delay: 2s; }
+        .leaf:nth-child(4) { left: 18%; animation-duration: 9s; animation-delay: 3s; }
+        .leaf:nth-child(5) { left: 23%; animation-duration: 13s; animation-delay: 4s; }
+        .leaf:nth-child(6) { left: 28%; animation-duration: 15s; animation-delay: 2s; }
+        .leaf:nth-child(7) { left: 33%; animation-duration: 10s; animation-delay: 1s; }
+        .leaf:nth-child(8) { left: 38%; animation-duration: 14s; animation-delay: 0s; }
+        .leaf:nth-child(9) { left: 43%; animation-duration: 8s; animation-delay: 3s; }
+        .leaf:nth-child(10) { left: 48%; animation-duration: 16s; animation-delay: 4s; }
+        .leaf:nth-child(11) { left: 53%; animation-duration: 12s; animation-delay: 2s; }
+        .leaf:nth-child(12) { left: 58%; animation-duration: 10s; animation-delay: 1s; }
+        .leaf:nth-child(13) { left: 63%; animation-duration: 14s; animation-delay: 2s; }
+        .leaf:nth-child(14) { left: 68%; animation-duration: 9s; animation-delay: 0s; }
+        .leaf:nth-child(15) { left: 73%; animation-duration: 13s; animation-delay: 3s; }
+        .leaf:nth-child(16) { left: 78%; animation-duration: 11s; animation-delay: 1s; }
+        .leaf:nth-child(17) { left: 83%; animation-duration: 10s; animation-delay: 4s; }
+        .leaf:nth-child(18) { left: 88%; animation-duration: 15s; animation-delay: 2s; }
+        .leaf:nth-child(19) { left: 93%; animation-duration: 14s; animation-delay: 1s; }
+        .leaf:nth-child(20) { left: 98%; animation-duration: 12s; animation-delay: 3s; }
+
+        /* New Styling for the Thank You Message */
+        .thank-you-message {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #006622;
+            margin-top: 40px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: fadeInUp 2s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>You have been logged out.</h1>
+    </header>
+
+    <nav id="navbar">
+        <a href="1.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="user_login.html">Login again</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="container">
+        <p class="thank-you-message">Thank you for visiting. Come back soon!</p>
+    </div>
+
+    <!-- Leaf Animation Script -->
+    <script>
+        // Create 20 leaf elements and append them to the body
+        for (let i = 0; i < 20; i++) {
+            const leaf = document.createElement('div');
+            leaf.classList.add('leaf');
+            document.body.appendChild(leaf);
+        }
+    </script>
+</body>
+</html>

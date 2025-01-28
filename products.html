@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page - THE GARDEN</title>
+    <link rel="stylesheet" href="stylepro.css">
+    <style>
+        .product-description {
+            display: none;
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #555;
+        }
+        .search-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .search-container input {
+            padding: 10px;
+            width: 80%;
+            max-width: 400px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>THE GARDEN</h1>
+    </header>
+
+    <nav id="navbar">
+        <a href="1.html">Home</a>
+        <a href="orders.php" id="orders-link" onclick="checkLogin(event)">Orders</a>
+        <a href="products.html">Products</a>
+        <a href="cart.html">Cart</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="search-container">
+        <input type="text" id="search-bar" placeholder="Search for products...">
+    </div>
+
+    <div class="products-container">
+        <div id="product-grid" class="product-grid">
+            <!-- Product items will be injected here by JavaScript -->
+        </div>
+    </div>
+
+    <footer id="contact">
+        <p>Thank you for visiting our website.</p>
+    </footer>
+
+    <script>
+        let isLoggedIn = false;
+
+        // Fetch product data and display it
+        fetch('products.php')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => {
+                const productGrid = document.getElementById('product-grid');
+                isLoggedIn = data.isLoggedIn;
+
+                if (Array.isArray(data.products) && data.products.length > 0) {
+                    data.products.forEach(product => {
+                        const productItem = document.createElement('div');
+                        productItem.classList.add('product-item');
+                        productItem.innerHTML = `
+                            <img src="uploads/${product.image}" alt="${product.name}">
+                            <h3>${product.name}</h3>
+                            <p>₹${parseFloat(product.price).toFixed(2)}</p>
+                            <p class="product-description">${product.description}</p>
+                            <button class="add-to-cart" onclick="addToCart(${product.id})">Add to Cart</button>
+                        `;
+                        productGrid.appendChild(productItem);
+
+                        const productImage = productItem.querySelector('img');
+                        productImage.addEventListener('click', () => {
+                            const description = productItem.querySelector('.product-description');
+                            description.style.display = description.style.display === 'none' || description.style.display === '' ? 'block' : 'none';
+                        });
+                    });
+
+                    const searchBar = document.getElementById('search-bar');
+                    searchBar.addEventListener('keyup', () => {
+                        const searchTerm = searchBar.value.toLowerCase();
+                        const productItems = document.querySelectorAll('.product-item');
+                        productItems.forEach(item => {
+                            const productName = item.querySelector('h3').textContent.toLowerCase();
+                            item.style.display = productName.includes(searchTerm) ? 'block' : 'none';
+                        });
+                    });
+                } else {
+                    productGrid.innerHTML = '<p>No products available.</p>';
+                }
+            })
+            .catch(error => console.error('Error fetching products:', error));
+
+        // Function to check login for orders page
+        function checkLogin(event) {
+            if (!isLoggedIn) {
+                // Prevent default navigation to the Orders page
+                event.preventDefault();
+                // Show alert message to login
+                alert("Please log in to view your orders.");
+            }
+        }
+
+        // Function to add product to cart with login check
+        function addToCart(productId) {
+            if (!isLoggedIn) {
+                // Show alert message if the user is not logged in
+                alert("Please log in to add products to your cart.");
+                return;
+            }
+
+            // Proceed with adding the product to cart if logged in
+            fetch('add_to_cart.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ product_id: productId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Display confirmation alert with "Yes" or "No" options
+                    const goToCart = confirm("Product added to cart! Do you want to view your cart?");
+                    if (goToCart) {
+                        // Redirect to the cart page if the user clicks "Yes"
+                        window.location.href = 'cart.html';
+                    }
+                } else {
+                    alert("Failed to add product to cart. Please try again.");
+                }
+            })
+            .catch(error => console.error('Error adding product to cart:', error));
+        }
+    </script>
+</body>
+</html>

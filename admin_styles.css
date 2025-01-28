@@ -1,0 +1,317 @@
+/* General Styles */
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #333;
+  scroll-behavior: smooth;
+}
+
+header {
+  background-color: #006622;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+nav {
+  background-color: #004d1a;
+  padding: 10px 0;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  transition: position 0.3s, top 0.3s;
+}
+
+nav.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+}
+
+nav a, .dropdown .dropbtn {
+  margin: 0 20px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+nav a:hover, .dropdown .dropbtn:hover {
+  background-color: #006622;
+}
+
+footer {
+  background-color: #004d1a;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 50px;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
+}
+
+#spacer {
+  height: 40px;
+  background-color: #f4f4f4;
+}
+
+/* Admin Dashboard and Management Pages Styles */
+.admin-container, .manage-users-container, .manage-products-container, .logout-container {
+  padding: 20px;
+}
+
+.admin-container h2, .manage-users-container h2, .manage-products-container h2, .logout-container h2 {
+  color: #006622;
+}
+
+.dashboard-links, .manage-users-container table, .manage-products-container table {
+  margin-top: 20px;
+}
+
+/* Dashboard Links */
+.dashboard-links a {
+  background-color: #006622;
+  color: white;
+  padding: 15px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.dashboard-links a:hover {
+  background-color: #004d1a;
+}
+
+/* Tables */
+.manage-users-container table, .manage-products-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.manage-users-container table, .manage-products-container table, th, td {
+  border: 1px solid #ddd;
+}
+
+.manage-users-container th, .manage-products-container th, td {
+  padding: 12px;
+  text-align: left;
+}
+
+.manage-users-container th, .manage-products-container th {
+  background-color: #004d1a;
+  color: white;
+}
+
+.manage-users-container tr:nth-child(even), .manage-products-container tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.manage-users-container tr:hover, .manage-products-container tr:hover {
+  background-color: #ddd;
+}
+
+/* Buttons */
+.manage-users-container button, .manage-products-container button, .add-product-button {
+  background-color: #cc0000;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.manage-users-container button:hover, .manage-products-container button:hover, .add-product-button:hover {
+  background-color: #990000;
+}
+
+/* Product Management Specific Styles */
+.manage-products-container h3 {
+  color: #004d1a;
+  margin-top: 20px;
+}
+
+.manage-products-container img {
+  width: 100px; /* Adjust for larger image */
+  height: auto;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.manage-products-container .action-buttons {
+  display: flex;
+  gap: 10px; /* Space between buttons */
+}
+
+.manage-products-container .product-item {
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.manage-products-container .product-item h3 {
+  font-size: 18px;
+  margin: 0;
+  color: #333;
+}
+
+.manage-products-container .product-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.manage-products-container .product-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.manage-products-container .add-product-button {
+  background-color: #006622;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.manage-products-container .add-product-button:hover {
+  background-color: #004d1a;
+}
+
+/* Logout Page */
+.logout-container p {
+  margin-top: 20px;
+}
+
+.logout-container a {
+  color: #006622;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.logout-container a:hover {
+  text-decoration: underline;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1024px) {
+  body {
+    padding: 10px;
+  }
+
+  header {
+    padding: 15px 0;
+  }
+
+  nav a {
+    margin: 0 10px;
+    font-size: 14px;
+  }
+
+  .container {
+    width: 90%;
+  }
+
+  .admin-container, .manage-users-container, .manage-products-container, .logout-container {
+    padding: 15px;
+  }
+
+  .dashboard-links a {
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+
+  .manage-users-container table, .manage-products-container table {
+    font-size: 14px;
+  }
+
+  .manage-users-container th, .manage-products-container th, td {
+    padding: 10px;
+  }
+
+  .manage-products-container img {
+    width: 80px; /* Adjust for smaller screens */
+  }
+
+  /* Adjust button size */
+  .manage-users-container button, .manage-products-container button, .add-product-button {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  nav a {
+    font-size: 12px;
+  }
+
+  .manage-users-container table, .manage-products-container table {
+    font-size: 12px;
+  }
+
+  .manage-users-container th, .manage-products-container th, td {
+    padding: 8px;
+  }
+
+  .manage-products-container img {
+    width: 70px;
+  }
+
+  /* Adjust button size */
+  .manage-users-container button, .manage-products-container button, .add-product-button {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: 10px 0;
+  }
+
+  nav {
+    padding: 5px 0;
+  }
+
+  nav a {
+    margin: 0 5px;
+    font-size: 10px;
+  }
+
+  .manage-users-container table, .manage-products-container table {
+    font-size: 10px;
+  }
+
+  .manage-users-container th, .manage-products-container th, td {
+    padding: 5px;
+  }
+
+  .manage-products-container img {
+    width: 60px; /* Adjust for mobile */
+  }
+
+  /* Adjust button size */
+  .manage-users-container button, .manage-products-container button, .add-product-button {
+    padding: 4px 8px;
+    font-size: 10px;
+  }
+}

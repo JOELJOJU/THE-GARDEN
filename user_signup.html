@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Signup - THE GARDEN</title>
+    <link rel="stylesheet" href="signup_styles.css">
+    <style>
+        .toggle-password {
+            cursor: pointer;
+            font-size: 14px;
+            color: #006622;
+            display: block;
+            margin-top: 5px;
+        }
+    </style>
+    <script>
+        function togglePasswordVisibility() {
+            const passwordField = document.getElementById("password");
+            const confirmPasswordField = document.getElementById("confirm-password");
+            const passwordFieldType = passwordField.type === "password" ? "text" : "password";
+            passwordField.type = passwordFieldType;
+            confirmPasswordField.type = passwordFieldType;
+        }
+
+        function validateForm() {
+            const username = document.getElementById("username").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirm-password").value;
+
+            // Username validation
+            const usernameRegex = /^[a-zA-Z0-9]+$/;
+            if (!usernameRegex.test(username)) {
+                alert("Username must be alphanumeric only!");
+                return false;
+            }
+
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert("Invalid email format!");
+                return false;
+            }
+
+            // Password validation
+            const passwordRegex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}/;
+            if (!passwordRegex.test(password)) {
+                alert("Password must be at least 8 characters long and include one uppercase letter, one lowercase letter, one number, and one special character.");
+                return false;
+            }
+
+            // Confirm password validation
+            if (password !== confirmPassword) {
+                alert("Passwords do not match!");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <div class="signup-container">
+        <h2>User Signup</h2>
+        <form action="user_signup.php" method="post" onsubmit="return validateForm()">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" 
+                   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}" 
+                   title="Must contain at least 8 characters, including one uppercase letter, one lowercase letter, one number, and one special character" 
+                   required>
+
+            <label for="confirm-password">Confirm Password</label>
+            <input type="password" id="confirm-password" name="confirm-password" required>
+
+            <label>
+                <input type="checkbox" onclick="togglePasswordVisibility()"> Show Password
+            </label>
+
+            <input type="submit" value="Sign Up">
+        </form>
+        <div class="message">
+            <p>Already have an account? <a href="user_login.html">Login here</a></p>
+        </div>
+    </div>
+</body>
+</html>
