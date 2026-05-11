@@ -1,4 +1,7 @@
-# THE-GARDEN  `#0969DA` 
+# THE-GARDEN
+
+ `#0969DA`
+
 :triangular_flag_on_post: This project is an e-commerce platform named "The Garden" designed to facilitate the online
 sale of plants . 
 
